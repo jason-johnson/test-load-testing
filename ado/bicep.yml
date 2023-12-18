@@ -19,4 +19,6 @@ steps:
         az --version
         az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }}
         az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.bicepPath }} -n "${{ parameters.deploymentName }}"
-        az deployment group show -g ${{ parameters.resourceGroupName }} -n "${{ parameters.deploymentName }}" --query properties.outputs.load_test_id.value
+        $loadTestId = az deployment group show -g ${{ parameters.resourceGroupName }} -n "${{ parameters.deploymentName }}" --query properties.outputs.load_test_id.value
+        Write-Host  "##vso[task.setvariable variable=TF_OUT_LOAD_TEST_ID;]$loadTestId"
+        Write-Host  "[task.setvariable variable=TF_OUT_LOAD_TEST_ID;]$loadTestId"
