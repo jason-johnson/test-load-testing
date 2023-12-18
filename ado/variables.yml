@@ -3,6 +3,8 @@ variables:
     value: 1.6.4
   - name: terraformPath
     value: terraform
+  - name: bicepPath
+    value: bicep/loadtest.bicep
   - name: serviceConnection
     value: mcaps-hybrid-jasojohnson
   - name: terraformContainerName
@@ -11,3 +13,5 @@ variables:
     value: stterraformjasojoh
   - name: terraformResourceGroupName
     value: rg-manual
+  - name: bicepResourceGroupName
+    value: rg-bicep-demo-weu-bicep

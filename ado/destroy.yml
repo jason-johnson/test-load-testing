@@ -33,3 +33,14 @@ steps:
         action: destroy
         env:
           TF_VAR_branch: ${{ variables.saltVar }}
+
+  - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: $(serviceConnection)
+        scriptType: bash
+        scriptLocation: inlineScript
+        useGlobalConfig: false
+        inlineScript: |
+          az --version
+          az group delete --name $(bicepResourceGroupName) --yes

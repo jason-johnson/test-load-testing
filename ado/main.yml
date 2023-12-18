@@ -43,13 +43,7 @@ steps:
   - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
     - template: bicep.yml
       parameters:
-        bicepVersion: $(bicepVersion)
-        bicepPath: $(bicepPath)
-        serviceConnection: $(serviceConnection)
-        containerName: $(bicepContainerName)
-        storageAccountName: $(bicepStorageAccountName)
-        workspace: ${{ variables.saltVar }}
-        useWorkspace: ${{ parameters.useWorkspace }}
-        resourceGroupName: $(bicepResourceGroupName)
-        env:
-          TF_VAR_branch: ${{ variables.saltVar }}
+        - bicepPath: $(bicepPath)
+        - serviceConnection: $(serviceConnection)
+        - resourceGroupName: $(bicepResourceGroupName)
+        - location: westeurope

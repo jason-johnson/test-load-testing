@@ -3,9 +3,7 @@ parameters:
   - name: serviceConnection
   - name: resourceGroupName
   - name: location
-    default: $(ResourceGroupName)
-  - name: action
-    default: 'create'
+    default: westeurope
 
 steps:
   - task: AzureCLI@2
@@ -17,4 +15,4 @@ steps:
       inlineScript: |
         az --version
         az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }}
-        az deployment group ${{ parameters.action }} --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.bicepPath }}
+        az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.bicepPath }}
