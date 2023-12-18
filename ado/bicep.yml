@@ -4,6 +4,8 @@ parameters:
   - name: resourceGroupName
   - name: location
     default: westeurope
+  - name: deploymentName
+    default: bicep-deployment
 
 steps:
   - task: AzureCLI@2
@@ -16,4 +18,5 @@ steps:
       inlineScript: |
         az --version
         az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }}
-        az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.bicepPath }}
+        az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.bicepPath }} -n "${{ parameters.deploymentName }}"
+        az deployment group show -g ${{ parameters.resourceGroupName }} -n "${{ parameters.deploymentName }}" --query properties.outputs.load_test_id.value
