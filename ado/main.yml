@@ -43,7 +43,7 @@ steps:
   - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
     - template: bicep.yml
       parameters:
-        - bicepPath: $(bicepPath)
-        - serviceConnection: $(serviceConnection)
-        - resourceGroupName: $(bicepResourceGroupName)
-        - location: westeurope
+        bicepPath: $(bicepPath)
+        serviceConnection: $(serviceConnection)
+        resourceGroupName: $(bicepResourceGroupName)
+        location: westeurope
