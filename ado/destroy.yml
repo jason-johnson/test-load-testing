@@ -19,7 +19,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - ${{ if eq(parameters.infraTechnology, 'terraform'}}:
+  - ${{ if eq(parameters.infraTechnology, 'terraform') }}:
     - template: terraform.yml
       parameters:
         terraformVersion: $(terraformVersion)

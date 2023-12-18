@@ -26,7 +26,7 @@ pool:
   vmImage: "ubuntu-latest"
 
 steps:
-  - ${{ if eq(parameters.infraTechnology, 'terraform'}}:
+  - ${{ if eq(parameters.infraTechnology, 'terraform') }}:
     - template: terraform.yml
       parameters:
         terraformVersion: $(terraformVersion)
@@ -40,7 +40,7 @@ steps:
         env:
           TF_VAR_branch: ${{ variables.saltVar }}
 
-  - ${{ if eq(parameters.infraTechnology, 'bicep'}}:
+  - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
     - template: bicep.yml
       parameters:
         bicepVersion: $(bicepVersion)
