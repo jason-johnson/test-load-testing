@@ -38,7 +38,8 @@ steps:
           $displayName = $config.displayName
           $description = $config.description
           $engineInstances = $config.engineInstances
-          Write-Host("az load test create --load-test-resource $Env:LOADTEST_RESOURCE_NAME --test-id $testId  --display-name $displayName --description $description --test-plan test.jmx --engine-instances $engineInstances")
+          $testPlan = $config.testPlan
+          Write-Host("az load test create --load-test-resource $Env:LOADTEST_RESOURCE_NAME --test-id $testId  --display-name $displayName --description $description --test-plan $testPlan --engine-instances $engineInstances")
         }
     env:
       LOADTEST_RESOURCE_NAME: ${{ parameters.loadTestResourceName }}
