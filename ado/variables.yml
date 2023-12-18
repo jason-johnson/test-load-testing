@@ -14,4 +14,4 @@ variables:
   - name: terraformResourceGroupName
     value: rg-manual
   - name: bicepResourceGroupName
-    value: rg-bicep-demo-weu-bicep
+    value: rg-bicep-demo-chn-bicep
