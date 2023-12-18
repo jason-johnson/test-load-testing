@@ -5,5 +5,5 @@ variable "branch" {
 
 variable "location" {
   description = "default location to use if not specified"
-  default = "switzerlandnorth"  
+  default = "westeurope"  
 }

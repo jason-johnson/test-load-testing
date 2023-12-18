@@ -32,4 +32,4 @@ steps:
         bicepPath: $(bicepPath)
         serviceConnection: $(serviceConnection)
         resourceGroupName: $(bicepResourceGroupName)
-        location: switzerlandnorth
+        location: westeurope
