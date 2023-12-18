@@ -20,7 +20,5 @@ steps:
         foreach ($f in $files) {
           Write-Host("#### file: {0}" -f $f.FullName)
         }
-}
-
 
 #        az load test create --load-test-resource  ${{ parameters.loadTestResourceName }} --test-id $testId  --display-name "My CLI Load Test" --description "Created using Az CLI" --test-plan $testPlan --engine-instances 1
