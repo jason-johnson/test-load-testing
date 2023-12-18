@@ -16,6 +16,6 @@ steps:
         Write-Host("#### testsPath: {0}" -f "${{ parameters.testsPath }}")
         Write-Host("#### loadTestResourceName: {0}" -f "${{ parameters.loadTestResourceName }}")
 
-        Get-ChildItem -File | Foreach {${{ parameters.testsPath }} $_.fullname}
+        Get-ChildItem -File | Foreach {"${{ parameters.testsPath }}" $_.fullname}
 
 #        az load test create --load-test-resource  ${{ parameters.loadTestResourceName }} --test-id $testId  --display-name "My CLI Load Test" --description "Created using Az CLI" --test-plan $testPlan --engine-instances 1
