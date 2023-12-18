@@ -52,5 +52,4 @@ steps:
         useWorkspace: ${{ parameters.useWorkspace }}
         resourceGroupName: $(bicepResourceGroupName)
         env:
-          TF_VAR_branch: ${{ variables.saltVar }
-
+          TF_VAR_branch: ${{ variables.saltVar }}
