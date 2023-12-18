@@ -31,7 +31,7 @@ steps:
       parameters:
         terraformVersion: $(terraformVersion)
         terraformPath: $(terraformPath)
-        servicePrinciple: $(servicePrinciple)
+        serviceConnection: $(serviceConnection)
         containerName: $(terraformContainerName)
         storageAccountName: $(terraformStorageAccountName)
         workspace: ${{ variables.saltVar }}
@@ -45,7 +45,7 @@ steps:
       parameters:
         bicepVersion: $(bicepVersion)
         bicepPath: $(bicepPath)
-        servicePrinciple: $(servicePrinciple)
+        serviceConnection: $(serviceConnection)
         containerName: $(bicepContainerName)
         storageAccountName: $(bicepStorageAccountName)
         workspace: ${{ variables.saltVar }}

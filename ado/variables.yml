@@ -3,7 +3,7 @@ variables:
     value: 1.6.4
   - name: terraformPath
     value: terraform
-  - name: servicePrinciple
+  - name: serviceConnection
     value: mcaps-hybrid-jasojohnson
   - name: terraformContainerName
     value: terraform-loadtest

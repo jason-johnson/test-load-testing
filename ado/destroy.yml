@@ -24,7 +24,7 @@ steps:
       parameters:
         terraformVersion: $(terraformVersion)
         terraformPath: $(terraformPath)
-        servicePrinciple: $(servicePrinciple)
+        serviceConnection: $(serviceConnection)
         containerName: $(terraformContainerName)
         storageAccountName: $(terraformStorageAccountName)
         workspace: ${{ variables.saltVar }}

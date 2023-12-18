@@ -9,7 +9,7 @@
 parameters:
   - name: terraformVersion
   - name: terraformPath
-  - name: servicePrinciple
+  - name: serviceConnection
   - name: containerName
     default: $(Container)
   - name: storageAccountName
@@ -48,7 +48,7 @@ steps:
     inputs:
       command: init
       backendType: azurerm
-      backendServiceArm: ${{ parameters.servicePrinciple }}
+      backendServiceArm: ${{ parameters.serviceConnection }}
       backendAzureRmResourceGroupName: ${{ parameters.resourceGroupName }}
       backendAzureRmStorageAccountName: ${{ parameters.storageAccountName }}
       backendAzureRmContainerName: ${{ parameters.containerName }}
@@ -79,7 +79,7 @@ steps:
       displayName: 'terraform output'
       inputs:
         command: output
-        environmentServiceName: ${{ parameters.servicePrinciple }}
+        environmentServiceName: ${{ parameters.serviceConnection }}
         workingDirectory: ${{ parameters.terraformPath }}
 
   - ${{ each step in parameters.preActionSteps }}:
@@ -101,7 +101,7 @@ steps:
       displayName: 'terraform ${{ parameters.action }}'
       inputs:
         command: ${{ parameters.action }}
-        environmentServiceName: ${{ parameters.servicePrinciple }}
+        environmentServiceName: ${{ parameters.serviceConnection }}
         runAzLogin: true
         workingDirectory: ${{ parameters.terraformPath }}
         commandOptions: ${{ parameters.commandOptions }}
@@ -131,7 +131,7 @@ steps:
       displayName: 'terraform plan'
       inputs:
         command: plan
-        environmentServiceName: ${{ parameters.servicePrinciple }}
+        environmentServiceName: ${{ parameters.serviceConnection }}
         runAzLogin: true
         workingDirectory: ${{ parameters.terraformPath }}
         commandOptions: '${{ parameters.commandOptions }} -out=$(System.DefaultWorkingDirectory)/terraform.tfplan -detailed-exitcode'
@@ -165,7 +165,7 @@ steps:
       condition: and(succeeded(), eq(variables['TERRAFORM_PLAN_HAS_CHANGES'], 'true'))
       inputs:
         command: apply
-        environmentServiceName: ${{ parameters.servicePrinciple }}
+        environmentServiceName: ${{ parameters.serviceConnection }}
         runAzLogin: true
         workingDirectory: ${{ parameters.terraformPath }}
         commandOptions: '$(System.DefaultWorkingDirectory)/terraform.tfplan'
@@ -175,7 +175,7 @@ steps:
       displayName: 'terraform output'
       inputs:
         command: output
-        environmentServiceName: ${{ parameters.servicePrinciple }}
+        environmentServiceName: ${{ parameters.serviceConnection }}
         workingDirectory: ${{ parameters.terraformPath }}
 
 # TODO: terraform output currently has a bug that variables it produces are not passed to other jobs
