@@ -22,6 +22,8 @@ steps:
         Write-Host("#### testsPath: {0}" -f "${{ parameters.testsPath }}")
         Write-Host("#### loadTestResource: {0}" -f $Env:LOADTEST_RESOURCE)
 
+        az load test list --load-test-resource "$Env:LOADTEST_RESOURCE"
+
         $directories = Get-ChildItem "${{ parameters.testsPath }}"
         foreach ($d in $directories) {
           Write-Host("#### Processing test: {0}" -f $d.FullName)
@@ -41,7 +43,7 @@ steps:
           }
 
           Write-Host("#### Creating test: {0}" -f $displayName)
-          az load test create --load-test-resource "$Env:LOADTEST_RESOURCE" --test-id "$testId"  --display-name "$displayName" --description "$description" --test-plan "$d/$testPlan" --engine-instances $engineInstances
+          az load test create --load-test-resource "$Env:LOADTEST_RESOURCE" --test-id "$testId"  --load-test-config-file "$d/config.yaml"
         }
     env:
       LOADTEST_RESOURCE: ${{ parameters.loadTestResource }}
