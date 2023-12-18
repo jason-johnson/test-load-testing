@@ -1,4 +1,4 @@
-data "namep_azure_name" "lt" {
+data "namep_custom_name" "lt" {
   name     = "main"
   location = var.location
   type     = "azurerm_load_test"

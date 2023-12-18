@@ -23,6 +23,10 @@ provider "namep" {
   default_nodash_name_format   = "#{SLUG}#{TOKEN_1}#{TOKEN_2}#{SHORT_LOC}#{NAME}#{BRANCH}"
   default_resource_name_format = "#{SLUG}-#{TOKEN_1}-#{TOKEN_2}-#{SHORT_LOC}-#{NAME}#{-BRANCH}"
 
+  custom_resource_formats = {
+    azurerm_load_test = "lt-#{TOKEN_1}-#{TOKEN_2}-#{SHORT_LOC}-#{NAME}#{-BRANCH}"
+  }
+
   extra_tokens = {
     branch = var.branch
   }
