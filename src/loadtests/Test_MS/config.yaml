@@ -1,14 +1,14 @@
-displayName: Test_1
-testPlan: test.jmx
-description: First URL test
+displayName: Test_MS
+testPlan: quick_test.jmx
+description: Run test against microsoft.com
 engineInstances: 1
-testId: c37c466c-7098-4777-8cb9-d655f47175c5
+testId: faed4cd5-c6cc-4925-b4dc-87d4422e94b4
 testType: JMX
 splitAllCSVs: False
 failureCriteria: []
 env:
 - name: domain
-  value: azure.microsoft.com
+  value: microsoft.com
 - name: protocol
   value: https
 - name: threads_per_engine
