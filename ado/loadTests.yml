@@ -14,7 +14,7 @@ steps:
         Set-PSDebug -Trace 2
 
         Write-Host("#### testsPath: {0}" -f "${{ parameters.testsPath }}")
-        Write-Host("#### loadTestResourceName: {0}" -f $LOADTEST_RESOURCE_NAME)
+        Write-Host("#### loadTestResourceName: $LOADTEST_RESOURCE_NAME")
 
         $files = Get-ChildItem "${{ parameters.testsPath }}"
         foreach ($f in $files) {
