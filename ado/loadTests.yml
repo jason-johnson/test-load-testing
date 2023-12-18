@@ -29,16 +29,16 @@ steps:
             Write-Host("#### Skipping directory {0} as it does not contain a config.yaml file" -f $d.FullName)
             continue
           }
-          if(!(Test-Path "$d/test.jmx" -PathType Leaf)) {
-            Write-Host("#### Skipping directory {0} as it does not contain a test.jmx file" -f $d.FullName)
-            continue
-          }
           $config = (Get-Content "$d/config.yaml" -Raw) | ConvertFrom-Yaml
           $testId = $config.testId
           $displayName = $config.displayName
           $description = $config.description
           $engineInstances = $config.engineInstances
           $testPlan = $config.testPlan
+          if(!(Test-Path "$d/$testPlan" -PathType Leaf)) {
+            Write-Host("#### Skipping directory {0} as it does not contain a test.jmx file" -f $d.FullName)
+            continue
+          }
           Write-Host("az load test create --load-test-resource $Env:LOADTEST_RESOURCE_NAME --test-id $testId  --display-name $displayName --description $description --test-plan $testPlan --engine-instances $engineInstances")
         }
     env:
