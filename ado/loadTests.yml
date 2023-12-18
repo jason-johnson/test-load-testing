@@ -12,7 +12,7 @@ steps:
       useGlobalConfig: false
       inlineScript: |
         Install-Module powershell-yaml -force
-        Set-PSDebug -Trace 2
+        Set-PSDebug -Trace 1
 
         Write-Host("#### testsPath: {0}" -f "${{ parameters.testsPath }}")
         Write-Host("#### loadTestResourceName: {0}" -f $Env:LOADTEST_RESOURCE_NAME)
@@ -24,10 +24,16 @@ steps:
             Write-Host("#### Skipping directory {0} as it does not contain a config.yaml file" -f $d.FullName)
             continue
           }
+          if(!(Test-Path "$d/test.jmx" -PathType Leaf)) {
+            Write-Host("#### Skipping directory {0} as it does not contain a test.jmx file" -f $d.FullName)
+            continue
+          }
           $config = (Get-Content "$d/config.yaml" -Raw) | ConvertFrom-Yaml
-          Write-Host("#### testId: {0}" -f $config.testId)
+          $testId = $config.testId
+          $displayName = $config.displayName
+          $description = $config.description
+          $engineInstances = $config.engineInstances
+          Write-Host("az load test create --load-test-resource $Env:LOADTEST_RESOURCE_NAME --test-id $testId  --display-name $displayName --description $description --test-plan $testPlan --engine-instances $engineInstances")
         }
     env:
       LOADTEST_RESOURCE_NAME: ${{ parameters.loadTestResourceName }}
-
-#        az load test create --load-test-resource  ${{ parameters.loadTestResourceName }} --test-id $testId  --display-name "My CLI Load Test" --description "Created using Az CLI" --test-plan $testPlan --engine-instances 1
