@@ -22,10 +22,9 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       # Builds and pushes an image up to your Azure Container Registry
-      - name: Build and push image to ACR
+      - name: Bicep Deployment
         run: |
           az --version
-          az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }}
-          az deployment group create --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.bicepPath }} -n "${{ parameters.deploymentName }}"
-          loadTestId=$(az deployment group show -g ${{ parameters.resourceGroupName }} -n "${{ parameters.deploymentName }}" --query properties.outputs.load_test_id.value)
-          echo  "[task.setvariable variable=TF_OUT_LOAD_TEST_ID;]$loadTestId"
+          az group create --name rg-loadtst-demo-weu-bicep --location westeurope
+          az deployment group create --resource-group rg-loadtst-demo-weu-bicep --template-file bicep/loadtest.bicep -n "gh-deployment"
+          loadTestId=$(az deployment group show -g rg-loadtst-demo-weu-bicep -n "gh-deployment" --query properties.outputs.load_test_id.value)

@@ -5,7 +5,7 @@ parameters:
   - name: location
     default: westeurope
   - name: deploymentName
-    default: bicep-deployment
+    default: tf-deployment
 
 steps:
   - task: AzureCLI@2
