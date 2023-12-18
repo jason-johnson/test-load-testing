@@ -2,12 +2,12 @@ variables:
   - name: terraformVersion
     value: 1.6.4
   - name: terraformPath
-    value: infrastructure
+    value: terraform
   - name: servicePrinciple
-    value: tobedetermined
+    value: mcaps-hybrid-jasojohnson
   - name: terraformContainerName
     value: terraform-loadtest
   - name: terraformStorageAccountName
-    value: sapbterraform
+    value: stterraformjasojoh
   - name: terraformResourceGroupName
     value: rg-manual
