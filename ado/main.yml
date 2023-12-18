@@ -8,19 +8,9 @@ parameters:
     values:
       - terraform
       - bicep
-  - name: salt
-    default: ''
-  - name: useWorkspace
-    default: false
-    type: boolean
 
 variables:
   - template: variables.yml
-  - name: saltVar
-    ${{ if eq(parameters.useWorkspace, true) }}:
-      value: ${{ parameters.salt }}
-    ${{ else }}:
-      value: ''
 
 pool:
   vmImage: "ubuntu-latest"
@@ -37,8 +27,6 @@ steps:
         workspace: ${{ variables.saltVar }}
         useWorkspace: ${{ parameters.useWorkspace }}
         resourceGroupName: $(terraformResourceGroupName)
-        env:
-          TF_VAR_branch: ${{ variables.saltVar }}
 
   - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
     - template: bicep.yml
