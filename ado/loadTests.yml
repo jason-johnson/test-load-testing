@@ -2,8 +2,7 @@ parameters:
   - name: testsPath
   - name: loadTestResourceName
   - name: debug
-    type: boolean
-    default: false
+    default: "$false"
 
 steps:
   - task: AzureCLI@2
