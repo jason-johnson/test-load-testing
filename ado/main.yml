@@ -37,4 +37,4 @@ steps:
   - template: loadTests.yml
     parameters:
       testsPath: src/loadtests
-      loadTestResourceName: $(TF_OUT_LOAD_TEST_NAME)
+      loadTestResourceName: $(TF_OUT_load_test_name)
