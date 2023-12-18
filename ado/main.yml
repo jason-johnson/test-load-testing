@@ -33,3 +33,8 @@ steps:
         serviceConnection: $(serviceConnection)
         resourceGroupName: $(bicepResourceGroupName)
         location: westeurope
+
+  - template: loadTests.yml
+    parameters:
+      testsPath: src/loadtests
+      loadTestResourceName: TF_OUT_loadtest_resource_name

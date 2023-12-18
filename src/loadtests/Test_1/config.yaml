@@ -1,0 +1,22 @@
+displayName: Test_1
+testPlan: quick_test.jmx
+description: First URL test
+engineInstances: 1
+testId: c37c466c-7098-4777-8cb9-d655f47175c5
+testType: JMX
+splitAllCSVs: False
+failureCriteria: []
+env:
+- name: domain
+  value: azure.microsoft.com
+- name: protocol
+  value: https
+- name: threads_per_engine
+  value: 2
+- name: ramp_up_time
+  value: 60
+- name: duration_in_sec
+  value: 60
+autoStop:
+  errorPercentage: 90
+  timeWindow: 60

@@ -1,0 +1,21 @@
+parameters:
+  - name: testsPath
+  - name: loadTestResourceName
+
+steps:
+  - task: AzureCLI@2
+    displayName: Bicep Deployment
+    inputs:
+      azureSubscription: $(serviceConnection)
+      scriptType: pscore
+      scriptLocation: inlineScript
+      useGlobalConfig: false
+      inlineScript: |
+        Set-PSDebug -Trace 2
+
+        Write-Host("#### testsPath: {0}", -f ${{ parameters.testsPath }})
+        Write-Host("#### loadTestResourceName: {0}", -f ${{ parameters.loadTestResourceName }})
+
+        Get-ChildItem -File | Foreach {${{ parameters.testsPath }} $_.fullname}
+
+#        az load test create --load-test-resource  ${{ parameters.loadTestResourceName }} --test-id $testId  --display-name "My CLI Load Test" --description "Created using Az CLI" --test-plan $testPlan --engine-instances 1
