@@ -4,7 +4,7 @@ trigger:
 parameters:
   - name: infraTechnology
     type: string
-    default: 'terraform'
+    default: terraform
     values:
       - terraform
       - bicep
