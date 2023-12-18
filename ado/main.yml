@@ -24,8 +24,6 @@ steps:
         serviceConnection: $(serviceConnection)
         containerName: $(terraformContainerName)
         storageAccountName: $(terraformStorageAccountName)
-        workspace: ${{ variables.saltVar }}
-        useWorkspace: ${{ parameters.useWorkspace }}
         resourceGroupName: $(terraformResourceGroupName)
 
   - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
