@@ -5,7 +5,7 @@ data "namep_custom_name" "lt" {
 }
 
 resource "azurerm_load_test" "main" {
-  name                = data.namep_azure_name.lt.result
+  name                = data.namep_custom_name.lt.result
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
 
