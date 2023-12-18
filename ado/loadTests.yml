@@ -39,9 +39,9 @@ steps:
             Write-Host("#### Skipping directory {0} as it does not contain a test.jmx file" -f $d.FullName)
             continue
           }
-          
-          Set-PSDebug -Trace 1
-          az load test create --load-test-resource "$Env:LOADTEST_RESOURCE_NAME" --test-id "$testId"  --display-name "$displayName" --description "$description" --test-plan "$testPlan" --engine-instances $engineInstances
+
+          Write-Host("#### Creating test: {0}" -f $displayName)
+          az load test create --load-test-resource "$Env:LOADTEST_RESOURCE_NAME" --test-id "$testId"  --display-name "$displayName" --description "$description" --test-plan "$d/$testPlan" --engine-instances $engineInstances
         }
     env:
       LOADTEST_RESOURCE_NAME: ${{ parameters.loadTestResourceName }}
