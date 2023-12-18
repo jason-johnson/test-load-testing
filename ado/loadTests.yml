@@ -12,6 +12,7 @@ steps:
       useGlobalConfig: false
       inlineScript: |
         Set-PSDebug -Trace 2
+        Install-Module powershell-yaml
 
         Write-Host("#### testsPath: {0}" -f "${{ parameters.testsPath }}")
         Write-Host("#### loadTestResourceName: {0}" -f $Env:LOADTEST_RESOURCE_NAME)
