@@ -20,7 +20,7 @@ steps:
         foreach ($f in $files) {
           Write-Host("#### file: {0}" -f $f.FullName)
         }
-      env:
-        LOADTEST_RESOURCE_NAME: ${{ parameters.loadTestResourceName }}
+    env:
+      LOADTEST_RESOURCE_NAME: ${{ parameters.loadTestResourceName }}
 
 #        az load test create --load-test-resource  ${{ parameters.loadTestResourceName }} --test-id $testId  --display-name "My CLI Load Test" --description "Created using Az CLI" --test-plan $testPlan --engine-instances 1
