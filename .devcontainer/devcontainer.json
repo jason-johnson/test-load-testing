@@ -14,6 +14,27 @@
 		"ghcr.io/rchaganti/vsc-devcontainer-features/azurebicep:1": {},
 		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
 	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"[azure-pipelines]": {
+					"editor.defaultFormatter": "esbenp.prettier-vscode"
+				}
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"eamodio.gitlens",
+				"davidanson.vscode-markdownlint",
+				"hashicorp.terraform",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode.azurecli",
+				"ms-azuretools.vscode-azureterraform",
+				"ms-azure-devops.azure-pipelines",
+				"esbenp.prettier-vscode",
+				"github.copilot"
+			]
+		}
+	},
 	"mounts": [
 		"type=bind,source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,readonly"
 	]
