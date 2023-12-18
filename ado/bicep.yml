@@ -5,7 +5,7 @@ parameters:
   - name: location
     default: westeurope
   - name: deploymentName
-    default: tf-deployment
+    default: ado-deployment
 
 steps:
   - task: AzureCLI@2
