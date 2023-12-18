@@ -1,0 +1,20 @@
+parameters:
+  - name: bicepPath
+  - name: serviceConnection
+  - name: resourceGroupName
+  - name: location
+    default: $(ResourceGroupName)
+  - name: action
+    default: 'create'
+
+steps:
+  - task: AzureCLI@2
+    inputs:
+      azureSubscription: $(serviceConnection)
+      scriptType: bash
+      scriptLocation: inlineScript
+      useGlobalConfig: false
+      inlineScript: |
+        az --version
+        az group create --name ${{ parameters.resourceGroupName }} --location ${{ parameters.location }}
+        az deployment group ${{ parameters.action }} --resource-group ${{ parameters.resourceGroupName }} --template-file ${{ parameters.bicepPath }}
