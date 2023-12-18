@@ -12,7 +12,7 @@ steps:
     displayName: Bicep Deployment
     inputs:
       azureSubscription: $(serviceConnection)
-      scriptType: bash
+      scriptType: pscore
       scriptLocation: inlineScript
       useGlobalConfig: false
       inlineScript: |
