@@ -11,7 +11,7 @@ steps:
       scriptLocation: inlineScript
       useGlobalConfig: false
       inlineScript: |
-        Install-Module powershell-yaml
+        Install-Module powershell-yaml -force
         Set-PSDebug -Trace 2
 
         Write-Host("#### testsPath: {0}" -f "${{ parameters.testsPath }}")
