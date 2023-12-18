@@ -1,6 +1,9 @@
 parameters:
   - name: testsPath
   - name: loadTestResourceName
+  - name: debug
+    type: boolean
+    default: false
 
 steps:
   - task: AzureCLI@2
@@ -12,7 +15,10 @@ steps:
       useGlobalConfig: false
       inlineScript: |
         Install-Module powershell-yaml -force
-        Set-PSDebug -Trace 1
+
+        if(${{ parameters.debug }}) {
+          Set-PSDebug -Trace 1
+        }
 
         Write-Host("#### testsPath: {0}" -f "${{ parameters.testsPath }}")
         Write-Host("#### loadTestResourceName: {0}" -f $Env:LOADTEST_RESOURCE_NAME)
