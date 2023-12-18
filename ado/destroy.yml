@@ -20,6 +20,7 @@ steps:
 
   - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
     - task: AzureCLI@2
+      displayName: Bicep Destroy
       inputs:
         azureSubscription: $(serviceConnection)
         scriptType: bash
