@@ -1,0 +1,13 @@
+variables:
+  - name: terraformVersion
+    value: 1.6.4
+  - name: terraformPath
+    value: infrastructure
+  - name: servicePrinciple
+    value: tobedetermined
+  - name: terraformContainerName
+    value: terraform-loadtest
+  - name: terraformStorageAccountName
+    value: sapbterraform
+  - name: terraformResourceGroupName
+    value: rg-manual
