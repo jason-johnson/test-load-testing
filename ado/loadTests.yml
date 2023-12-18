@@ -4,7 +4,7 @@ parameters:
 
 steps:
   - task: AzureCLI@2
-    displayName: Bicep Deployment
+    displayName: Deploy Load tests
     inputs:
       azureSubscription: $(serviceConnection)
       scriptType: pscore
@@ -13,8 +13,8 @@ steps:
       inlineScript: |
         Set-PSDebug -Trace 2
 
-        Write-Host("#### testsPath: {0}", -f ${{ parameters.testsPath }})
-        Write-Host("#### loadTestResourceName: {0}", -f ${{ parameters.loadTestResourceName }})
+        Write-Host("#### testsPath: {0}" -f ${{ parameters.testsPath }})
+        Write-Host("#### loadTestResourceName: {0}" -f ${{ parameters.loadTestResourceName }})
 
         Get-ChildItem -File | Foreach {${{ parameters.testsPath }} $_.fullname}
 
