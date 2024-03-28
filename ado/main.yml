@@ -21,3 +21,5 @@ steps:
         AZDO_ORG_SERVICE_URL: https://dev.azure.com/jasojohnson
         AZDO_PERSONAL_ACCESS_TOKEN: $(PAT)
         AZURE_DEVOPS_EXT_PAT: $(PAT)
+      secrtets:
+        TF_AZURE_DEVOPS_PAT: $(PAT)
