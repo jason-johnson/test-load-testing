@@ -1,16 +1,9 @@
 trigger:
   - "*"
 
-parameters:
-  - name: infraTechnology
-    type: string
-    default: bicep
-    values:
-      - terraform
-      - bicep
-
 variables:
   - template: variables.yml
+  - group: build
 
 pool:
   vmImage: "ubuntu-latest"
@@ -26,3 +19,4 @@ steps:
       resourceGroupName: $(terraformResourceGroupName)
       env:
         AZDO_ORG_SERVICE_URL: https://dev.azure.com/jasojohnson
+        AZDO_PERSONAL_ACCESS_TOKEN: $(PAT)
