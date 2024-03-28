@@ -22,4 +22,4 @@ steps:
         AZDO_PERSONAL_ACCESS_TOKEN: $(PAT)
         AZURE_DEVOPS_EXT_PAT: $(PAT)
       secrets:
-        TF_AZURE_DEVOPS_PAT: $(PAT)
+        AZURE_DEVOPS_PAT: PAT
