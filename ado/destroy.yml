@@ -15,25 +15,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - ${{ if eq(parameters.infraTechnology, 'terraform') }}:
-    - template: terraform.yml
-      parameters:
-        terraformVersion: $(terraformVersion)
-        terraformPath: $(terraformPath)
-        serviceConnection: $(serviceConnection)
-        containerName: $(terraformContainerName)
-        storageAccountName: $(terraformStorageAccountName)
-        resourceGroupName: $(terraformResourceGroupName)
-        action: destroy
-
-  - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
-    - task: AzureCLI@2
-      displayName: Bicep Destroy
-      inputs:
-        azureSubscription: $(serviceConnection)
-        scriptType: bash
-        scriptLocation: inlineScript
-        useGlobalConfig: false
-        inlineScript: |
-          az --version
-          az group delete --name $(bicepResourceGroupName) --yes
+  - template: terraform.yml
+    parameters:
+      terraformVersion: $(terraformVersion)
+      terraformPath: $(terraformPath)
+      serviceConnection: $(serviceConnection)
+      containerName: $(terraformContainerName)
+      storageAccountName: $(terraformStorageAccountName)
+      resourceGroupName: $(terraformResourceGroupName)
+      secrets: [ AZURE_DEVOPS_PAT ]
+      action: destroy
