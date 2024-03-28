@@ -1,10 +1,8 @@
-data "namep_azure_name" "rg" {
-  name     = "tf"
-  location = var.location
-  type     = "azurerm_resource_group"
+data "azuredevops_project" "main" {
+  name = "Test Load Testing"
 }
 
-resource "azurerm_resource_group" "main" {
-  name     = data.namep_azure_name.rg.result
-  location = var.location
+resource "azuredevops_environment" "main" {
+  project_id = data.azuredevops_project.main.id
+  name       = "Test Environment"
 }

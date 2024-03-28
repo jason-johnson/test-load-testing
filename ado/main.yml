@@ -16,25 +16,11 @@ pool:
   vmImage: "ubuntu-latest"
 
 steps:
-  - ${{ if eq(parameters.infraTechnology, 'terraform') }}:
-    - template: terraform.yml
-      parameters:
-        terraformVersion: $(terraformVersion)
-        terraformPath: $(terraformPath)
-        serviceConnection: $(serviceConnection)
-        containerName: $(terraformContainerName)
-        storageAccountName: $(terraformStorageAccountName)
-        resourceGroupName: $(terraformResourceGroupName)
-
-  - ${{ if eq(parameters.infraTechnology, 'bicep') }}:
-    - template: bicep.yml
-      parameters:
-        bicepPath: $(bicepPath)
-        serviceConnection: $(serviceConnection)
-        resourceGroupName: $(bicepResourceGroupName)
-        location: westeurope
-
-  - template: loadTests.yml
+  - template: terraform.yml
     parameters:
-      testsPath: src/loadtests
-      loadTestResource: $(TF_OUT_LOAD_TEST_ID)
+      terraformVersion: $(terraformVersion)
+      terraformPath: $(terraformPath)
+      serviceConnection: $(serviceConnection)
+      containerName: $(terraformContainerName)
+      storageAccountName: $(terraformStorageAccountName)
+      resourceGroupName: $(terraformResourceGroupName)
