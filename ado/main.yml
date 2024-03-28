@@ -24,3 +24,5 @@ steps:
       containerName: $(terraformContainerName)
       storageAccountName: $(terraformStorageAccountName)
       resourceGroupName: $(terraformResourceGroupName)
+      env:
+        AZDO_ORG_SERVICE_URL: https://dev.azure.com/jasojohnson
