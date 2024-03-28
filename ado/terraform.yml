@@ -53,7 +53,7 @@ steps:
       backendAzureRmStorageAccountName: ${{ parameters.storageAccountName }}
       backendAzureRmContainerName: ${{ parameters.containerName }}
       backendAzureRmKey: terraform.tfstate
-      runAzLogin: true
+      runAzLogin: false
       workingDirectory: ${{ parameters.terraformPath }}
 
   - ${{ if eq(parameters.useWorkspace, true) }}:
@@ -102,7 +102,7 @@ steps:
       inputs:
         command: ${{ parameters.action }}
         environmentServiceName: ${{ parameters.serviceConnection }}
-        runAzLogin: true
+        runAzLogin: false
         workingDirectory: ${{ parameters.terraformPath }}
         commandOptions: ${{ parameters.commandOptions }}
       env:
@@ -132,7 +132,7 @@ steps:
       inputs:
         command: plan
         environmentServiceName: ${{ parameters.serviceConnection }}
-        runAzLogin: true
+        runAzLogin: false
         workingDirectory: ${{ parameters.terraformPath }}
         commandOptions: '${{ parameters.commandOptions }} -out=$(System.DefaultWorkingDirectory)/terraform.tfplan -detailed-exitcode'
         publishPlanResults: 'sds'
@@ -166,7 +166,7 @@ steps:
       inputs:
         command: apply
         environmentServiceName: ${{ parameters.serviceConnection }}
-        runAzLogin: true
+        runAzLogin: false
         workingDirectory: ${{ parameters.terraformPath }}
         commandOptions: '$(System.DefaultWorkingDirectory)/terraform.tfplan'
 
